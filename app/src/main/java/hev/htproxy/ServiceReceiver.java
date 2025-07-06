@@ -7,7 +7,7 @@
  ============================================================================
  */
 
-package hev.sockstun;
+package hev.htproxy;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
