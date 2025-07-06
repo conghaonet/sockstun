@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
 	namespace "hev.sockstun"
 	compileSdkVersion 34
-	ndkVersion "26.3.11579264"
+	// ndkVersion "26.3.11579264"
 
 	defaultConfig {
 		applicationId "hev.sockstun"
@@ -15,12 +15,12 @@ android {
 		ndk {
 			abiFilters "armeabi-v7a", "arm64-v8a",'x86','x86_64'
 		}
-		externalNativeBuild {
-			ndkBuild {
-				arguments "APP_CFLAGS+=-DPKGNAME=hev/sockstun -ffile-prefix-map=${rootDir}=."
-				arguments "APP_LDFLAGS+=-Wl,--build-id=none"
-			}
-		}
+//		externalNativeBuild {
+//			ndkBuild {
+//				arguments "APP_CFLAGS+=-DPKGNAME=hev/sockstun -ffile-prefix-map=${rootDir}=."
+//				arguments "APP_LDFLAGS+=-Wl,--build-id=none"
+//			}
+//		}
 	}
 
 	signingConfigs {
@@ -53,11 +53,11 @@ android {
 		}
 	}
 
-	externalNativeBuild {
-		ndkBuild {
-			path "src/main/jni/Android.mk"
-		}
-	}
+//	externalNativeBuild {
+//		ndkBuild {
+//			path "src/main/jni/Android.mk"
+//		}
+//	}
 
 	lintOptions {
 		checkReleaseBuilds false
@@ -71,6 +71,12 @@ android {
 		includeInApk = false
 		// Disables dependency metadata when building Android App Bundles.
 		includeInBundle = false
+	}
+	sourceSets {
+		main {
+			jniLibs.srcDirs = ['src/main/libs']
+			java.srcDirs += 'src/main/java'
+		}
 	}
 }
 
